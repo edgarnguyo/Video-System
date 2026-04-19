@@ -30,7 +30,6 @@ public class RentalView {
         Label movieLabel = new Label("Movie:");
         movieLabel.setPrefWidth(100);
 
-        // Bound to live movie list
         ComboBox<Movie> movieCombo = new ComboBox<>(logic.getAllMovies());
         movieCombo.setPrefWidth(250);
 
@@ -38,10 +37,10 @@ public class RentalView {
         movieRow.setAlignment(Pos.CENTER_LEFT);
 
         Button rentButton = new Button("Rent Movie");
-        rentButton.setPrefWidth(250);
+        rentButton.setPrefWidth(150);
 
         HBox rentRow = new HBox(rentButton);
-        rentRow.setAlignment(Pos.CENTER_RIGHT);
+        rentRow.setAlignment(Pos.CENTER);
 
         Label registeredLabel = new Label("Rentals:");
         registeredLabel.setPrefWidth(100);
@@ -53,10 +52,10 @@ public class RentalView {
         registeredRow.setAlignment(Pos.CENTER_LEFT);
 
         Button removeButton = new Button("Remove Rental");
-        removeButton.setPrefWidth(250);
+        removeButton.setPrefWidth(150);
 
         HBox removeRow = new HBox(removeButton);
-        removeRow.setAlignment(Pos.CENTER_RIGHT);
+        removeRow.setAlignment(Pos.CENTER);
 
         rentButton.setOnAction(e -> {
             Customer customer = customerCombo.getValue();

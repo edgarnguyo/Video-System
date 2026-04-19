@@ -38,10 +38,10 @@ public class MovieView {
         nameRow.setAlignment(Pos.CENTER_LEFT);
 
         Button saveButton = new Button("Save Movie");
-        saveButton.setPrefWidth(250);
+        saveButton.setPrefWidth(150);
 
         HBox saveRow = new HBox(saveButton);
-        saveRow.setAlignment(Pos.CENTER_RIGHT);
+        saveRow.setAlignment(Pos.CENTER);
 
         Label registeredLabel = new Label("Registered:");
         registeredLabel.setPrefWidth(100);
@@ -53,13 +53,11 @@ public class MovieView {
         registeredRow.setAlignment(Pos.CENTER_LEFT);
 
         Button removeButton = new Button("Remove Movie");
-        removeButton.setPrefWidth(250);
+        removeButton.setPrefWidth(150);
 
         HBox removeRow = new HBox(removeButton);
-        removeRow.setAlignment(Pos.CENTER_RIGHT);
+        removeRow.setAlignment(Pos.CENTER);
 
-        // When genre changes, refresh the registered movies list for that genre
-        // Also attach a listener to the global movie list so saves in this view reflect immediately
         genreCombo.setOnAction(e -> {
             Genre selected = genreCombo.getValue();
             refreshRegistered(registeredCombo, selected);
@@ -76,7 +74,6 @@ public class MovieView {
             if (movieName.isEmpty() || selectedGenre == null) return;
 
             logic.addMovie(movieName, selectedGenre);
-            // listener on getAllMovies() fires and refreshes registeredCombo
             nameField.clear();
         });
 

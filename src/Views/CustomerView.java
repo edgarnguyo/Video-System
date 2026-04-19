@@ -18,11 +18,17 @@ public class CustomerView {
 
     public void buildUI() {
         Label nameLabel = new Label("Customer Name:");
+        nameLabel.setPrefWidth(100);
         TextField nameField = new TextField();
+        nameField.setPrefWidth(250);
         Label phoneLabel = new Label("Phone:");
+        phoneLabel.setPrefWidth(100);
         TextField phoneField = new TextField();
+        phoneField.setPrefWidth(250);
         Label emailLabel = new Label("Email:");
+        emailLabel.setPrefWidth(100);
         TextField emailField = new TextField();
+        emailField.setPrefWidth(250);
 
         HBox nameRow = new HBox(10, nameLabel, nameField);
         nameRow.setAlignment(Pos.CENTER_LEFT);
@@ -34,15 +40,14 @@ public class CustomerView {
         emailRow.setAlignment(Pos.CENTER_LEFT);
 
         Button addButton = new Button("Add Customer");
-        addButton.setPrefWidth(250);
+        addButton.setPrefWidth(150);
 
         HBox addRow = new HBox(addButton);
-        addRow.setAlignment(Pos.CENTER_RIGHT);
+        addRow.setAlignment(Pos.CENTER);
 
         Label registeredLabel = new Label("Registered:");
-        registeredLabel.setPrefWidth(120);
+        registeredLabel.setPrefWidth(100);
 
-        // Bound to live customer list — Customer.toString() returns name
         ComboBox<Customer> customerCombo = new ComboBox<>(logic.getCustomers());
         customerCombo.setPrefWidth(250);
 
@@ -50,10 +55,10 @@ public class CustomerView {
         registeredRow.setAlignment(Pos.CENTER_LEFT);
 
         Button removeButton = new Button("Remove Customer");
-        removeButton.setPrefWidth(250);
+        removeButton.setPrefWidth(150);
 
         HBox removeRow = new HBox(removeButton);
-        removeRow.setAlignment(Pos.CENTER_RIGHT);
+        removeRow.setAlignment(Pos.CENTER);
 
         addButton.setOnAction(e -> {
             String name = nameField.getText();
@@ -64,7 +69,7 @@ public class CustomerView {
 
             int phone = Integer.parseInt(phoneText);
 
-            logic.addCustomer(name, phone, email); // observable fires, combo refreshes automatically
+            logic.addCustomer(name, phone, email);
             nameField.clear();
             phoneField.clear();
             emailField.clear();
@@ -73,7 +78,7 @@ public class CustomerView {
         removeButton.setOnAction(e -> {
             Customer selected = customerCombo.getValue();
             if (selected == null) return;
-            logic.removeCustomer(selected.getName()); // observable fires, combo refreshes automatically
+            logic.removeCustomer(selected.getName()); 
             customerCombo.setValue(null);
         });
 
